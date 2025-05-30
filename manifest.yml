@@ -1,0 +1,33 @@
+lzc-sdk-version: "0.1"
+name: Shoebox
+package: cloud.lazycat.app.shoebox
+version: 0.0.17
+description: A digital shoebox for organizing and preserving your videos over a lifetime.
+homepage: https://github.com/slackspace-io/shoebox
+author: slackspace-io
+application:
+  subdomain: shoebox
+  background_task: true
+  public_path:
+    - /
+  routes:
+    - /=http://shoebox:3000/
+services:
+  shoebox:
+    image: registry.lazycat.cloud/czyt/slackspace-io/shoebox:2d2570c7175101bd
+    environment:
+      - SERVER_HOST=0.0.0.0
+      - SERVER_PORT=3000
+      - DATABASE_URL=sqlite:/app/data/videos.db
+      - MEDIA_SOURCE_PATHS=/mnt/videos
+      - THUMBNAIL_PATH=/app/thumbnails
+      - EXPORT_BASE_PATH=/app/exports
+      - RUST_LOG=info
+    binds:
+      - /lzcapp/var/videos:/mnt/videos
+      # Mount export directory (read-write)
+      - /lzcapp/var/exports:/app/exports
+      # Mount data directory for persistence
+      - /lzcapp/var/data:/app/data
+      # Mount thumbnails directory for persistence
+      - /lzcapp/var/thumbnails:/app/thumbnails
