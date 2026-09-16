@@ -6,11 +6,10 @@ application:
   upstreams:
     - location: /
       backend: http://shoebox:3000/
-
 services:
   shoebox:
-    # upstream: ghcr.io/devclef/shoebox:latest
-    image: ghcr.io/devclef/shoebox:latest
+    # upstream: ghcr.io/devclef/shoebox:latest@sha256:05495f177a40aaecb08e0a8fd9384595f139c6277b2eb85214d7e4ae278d4c6e
+    image: registry.lazycat.cloud/czyt/devclef/shoebox:e59b4128dac7b9cb
     environment:
       - SERVER_HOST=0.0.0.0
       - SERVER_PORT=3000
