@@ -8,8 +8,8 @@ application:
       backend: http://shoebox:3000/
 services:
   shoebox:
-    # upstream: ghcr.io/devclef/shoebox:latest@sha256:05495f177a40aaecb08e0a8fd9384595f139c6277b2eb85214d7e4ae278d4c6e
-    image: registry.lazycat.cloud/czyt/devclef/shoebox:e59b4128dac7b9cb
+    # upstream: ghcr.io/devclef/shoebox:latest@sha256:bc52e33fec81d9d323419f3344cc2ff78b7d89fe966811113f879193bc52f6a0
+    image: registry.lazycat.cloud/czyt/devclef/shoebox:ab0ecec66718189d
     environment:
       - SERVER_HOST=0.0.0.0
       - SERVER_PORT=3000
